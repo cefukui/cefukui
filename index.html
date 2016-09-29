@@ -58,6 +58,56 @@
 	
 	<script type="text/javascript">/*$($.date_input.initialize);*/</script>
 	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-85017709-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+	<script type="text/javascript">
+		// Envio de dados ao GA
+		
+		var anchors = [];
+
+		anchors.push({
+			'name': 'inicio',
+			'offset': $('a[name="inicio"]').offset().top,
+			'sent': false
+		});
+		anchors.push({
+			'name': 'sobre_nos',
+			'offset': $('a[name="sobre_nos"]').offset().top,
+			'sent': false
+		});
+		anchors.push({
+			'name': 'contato',
+			'offset': $('a[name="contato"]').offset().top,
+			'sent': false
+		});
+		anchors.push({
+			'name': 'mapa',
+			'offset': $('a[name="mapa"]').offset().top,
+			'sent': false
+		});
+
+		setTimeout(function(){
+			$(window).on('scroll', function() {
+				for (var i = 0; i < anchors.length; i++) {
+					if(!anchors[i].sent && $(window).scrollTop() > anchors[i].offset){
+						anchors[i].sent = true;
+						_trackEvent('default', 'scroll', anchors[i].name);
+					}
+				}
+			});
+		}, 1500);
+		
+	</script>
+
+
 </head>
 
 <body>
@@ -71,9 +121,9 @@
 		
 		<div id="nav" class="fright">
 			<ul class="navigation">
-				<li data-slide="1">Início</li>
-				<li data-slide="2">Sobre nós</li>
-				<li data-slide="8">Contato</li>
+				<li data-slide="1" onclick="_trackEvent('default', 'click', 'inicio', 'menu');">Início</li>
+				<li data-slide="2" onclick="_trackEvent('default', 'click', 'sobre-nos', 'menu');">Sobre nós</li>
+				<li data-slide="8" onclick="_trackEvent('default', 'click', 'contato', 'menu');">Contato</li>
 				<div class="clear"></div>
 			</ul>
 		</div>
@@ -94,7 +144,7 @@
 					<p>Somos a mais completa loja de papelaria da região, com tudo que você precisa para o seu dia-a-dia.</p>
 					<p>Tudo que você procura você encontra aqui!</p>
 				</div>
-				<a class="button" title="" data-slide="8">Entre em contato</a>
+				<a class="button" title="" data-slide="8" onclick="_trackEvent('default', 'click', 'contato', 'inicio');">Entre em contato</a>
 			</div>
 		</div>
 	</div>
@@ -163,7 +213,7 @@
 				<li></li>
 				<li class="touch_adress"><p>Rua Elias Dabarian, 371 - Inocoop - Guarulhos/SP</p></li>
 				<li></li>
-				<li class="facebook"><a target="_blank" href="https://www.facebook.com/CeFukui/">Facebook: Curta a nossa página</a></li>
+				<li class="facebook"><a target="_blank" href="https://www.facebook.com/CeFukui/"  onclick="_trackEvent('default', 'click', 'facebook', 'contato');">Facebook: Curta a nossa página</a></li>
 			</ul>
 		</div>
 		<div class="grid_6 omega">
@@ -187,7 +237,7 @@
 <div id="footer">
 	<div class="container clearfix">
 		<div class="copyright">Ce Fukui &copy; 2016</div>
-		<div id="back_top"><a class="button" title="" data-slide="1">voltar ao topo</a></div>
+		<div id="back_top"><a class="button"  onclick="_trackEvent('default', 'click', 'inicio', 'rodape');" data-slide="1">voltar ao topo</a></div>
 	</div>
 </div>
 
