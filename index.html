@@ -70,7 +70,7 @@
 	</script>
 	<script type="text/javascript">
 		// Envio de dados ao GA
-		
+
 		var anchors = [];
 
 		anchors.push({
@@ -99,7 +99,7 @@
 				for (var i = 0; i < anchors.length; i++) {
 					if(!anchors[i].sent && $(window).scrollTop() > anchors[i].offset){
 						anchors[i].sent = true;
-						_trackEvent('default', 'scroll', anchors[i].name);
+						ga('send', 'event', 'default', 'scroll', anchors[i].name);
 					}
 				}
 			});
@@ -121,9 +121,9 @@
 		
 		<div id="nav" class="fright">
 			<ul class="navigation">
-				<li data-slide="1" onclick="_trackEvent('default', 'click', 'inicio', 'menu');">Início</li>
-				<li data-slide="2" onclick="_trackEvent('default', 'click', 'sobre-nos', 'menu');">Sobre nós</li>
-				<li data-slide="8" onclick="_trackEvent('default', 'click', 'contato', 'menu');">Contato</li>
+				<li data-slide="1" onclick="ga('event', 'default', 'click', 'inicio', 'menu');">Início</li>
+				<li data-slide="2" onclick="ga('event', 'default', 'click', 'sobre-nos', 'menu');">Sobre nós</li>
+				<li data-slide="8" onclick="ga('event', 'default', 'click', 'contato', 'menu');">Contato</li>
 				<div class="clear"></div>
 			</ul>
 		</div>
@@ -144,7 +144,7 @@
 					<p>Somos a mais completa loja de papelaria da região, com tudo que você precisa para o seu dia-a-dia.</p>
 					<p>Tudo que você procura você encontra aqui!</p>
 				</div>
-				<a class="button" title="" data-slide="8" onclick="_trackEvent('default', 'click', 'contato', 'inicio');">Entre em contato</a>
+				<a class="button" title="" data-slide="8" onclick="ga('event', 'default', 'click', 'contato', 'inicio');">Entre em contato</a>
 			</div>
 		</div>
 	</div>
@@ -213,7 +213,7 @@
 				<li></li>
 				<li class="touch_adress"><p>Rua Elias Dabarian, 371 - Inocoop - Guarulhos/SP</p></li>
 				<li></li>
-				<li class="facebook"><a target="_blank" href="https://www.facebook.com/CeFukui/"  onclick="_trackEvent('default', 'click', 'facebook', 'contato');">Facebook: Curta a nossa página</a></li>
+				<li class="facebook"><a target="_blank" href="https://www.facebook.com/CeFukui/"  onclick="ga('event', 'default', 'click', 'facebook', 'contato');">Facebook: Curta a nossa página</a></li>
 			</ul>
 		</div>
 		<div class="grid_6 omega">
@@ -237,7 +237,7 @@
 <div id="footer">
 	<div class="container clearfix">
 		<div class="copyright">Ce Fukui &copy; 2016</div>
-		<div id="back_top"><a class="button"  onclick="_trackEvent('default', 'click', 'inicio', 'rodape');" data-slide="1">voltar ao topo</a></div>
+		<div id="back_top"><a class="button"  onclick="ga('event', 'default', 'click', 'inicio', 'rodape');" data-slide="1">voltar ao topo</a></div>
 	</div>
 </div>
 
